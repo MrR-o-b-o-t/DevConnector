@@ -1,0 +1,17 @@
+#navbar_links {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: end;
+}
+.navbar .logo {
+  font-weight: bold;
+  letter-spacing: 1px;
+  align-items: center;
+}
+.navbar .logo img {
+  margin-right: 10px;
+  filter: invert(25%);
+  width: 36px;
+  margin-top: -3px;
+}
