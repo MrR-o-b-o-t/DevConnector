@@ -1,15 +1,7 @@
 .sidebar {
-  width: 300px;
-  min-width: 300px;
   background: var(--primary-color);
   min-height: 100vh;
-  box-sizing: border-box;
-  position: relative;
   color: #fff;
-}
-.sidebar-content {
-  position: fixed;
-  width: inherit;
 }
 .sidebar .user {
   font-weight: bold;

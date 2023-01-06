@@ -1,10 +1,7 @@
 .user-list {
-  width: 250px;
-  min-width: 250px;
-  padding: 30px;
-  box-sizing: border-box;
   background: #fbfbfb;
   color: var(--heading-color);
+  padding-right: 50px;
 }
 .user-list h2 {
   text-align: right;

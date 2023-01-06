@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -58,14 +58,17 @@ export default function MainNavbar() {
       variant="light"
       className="mb-5"
     >
-      <Container fluid style={{ border: "1px solid red" }}>
+      <Container fluid>
         <Navbar.Brand href="/" className="logo">
           <img src={Logo} alt="Dev Connector logo" />
           <span>Dev Connector</span>
         </Navbar.Brand>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto" id="navbar_links">
-            {!user && (
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-end mx-3"
+        >
+          {!user && (
+            <Nav>
               <>
                 <li>
                   <Nav.Link to="/login">Login</Nav.Link>
@@ -74,23 +77,23 @@ export default function MainNavbar() {
                   <Nav.Link to="/signup">Signup</Nav.Link>
                 </li>
               </>
-            )}
+            </Nav>
+          )}
 
-            {user && (
-              <Nav className="me-auto">
-                {!isPending && (
-                  <Nav.Link className="btn" onClick={logout}>
-                    Logout
-                  </Nav.Link>
-                )}
-                {isPending && (
-                  <button className="btn" disabled>
-                    Logging out...
-                  </button>
-                )}
-              </Nav>
-            )}
-          </Nav>
+          {user && (
+            <Nav>
+              {!isPending && (
+                <Nav.Link className="btn" onClick={logout}>
+                  Logout
+                </Nav.Link>
+              )}
+              {isPending && (
+                <button className="btn" disabled>
+                  Logging out...
+                </button>
+              )}
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

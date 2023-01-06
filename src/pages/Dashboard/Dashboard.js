@@ -1,6 +1,8 @@
 import { useCollection } from "../../hooks/useCollection";
 import { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import Sidebar from "../../components/Sidebar";
+import OnlineUsers from "../../components/OnlineUsers";
 
 // Bootstrap Components
 import Container from "react-bootstrap/Container";
@@ -49,9 +51,10 @@ export default function Dashboard() {
     : null;
 
   return (
-    <Container>
+    <Container fluid>
       <Row>
-        <Col>
+        <Col sm={2}>{user && <Sidebar />}</Col>
+        <Col sm={8} className="text-center">
           <h2 className="page-title">Dashboard</h2>
           {error && (
             <Alert variant="danger" className="error">
@@ -61,6 +64,7 @@ export default function Dashboard() {
           {documents && <ProjectFilter changeFilter={changeFilter} />}
           {projects && <ProjectList projects={projects} />}
         </Col>
+        <Col sm={2}> {user && <OnlineUsers />}</Col>
       </Row>
     </Container>
   );
