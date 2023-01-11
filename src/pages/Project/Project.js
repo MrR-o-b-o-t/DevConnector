@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
+import { MDBCol, MDBRow, MDBContainer } from "mdb-react-ui-kit";
 
 // components
 import ProjectComments from "./ProjectComments";
@@ -20,9 +21,15 @@ export default function Project() {
   }
 
   return (
-    <div className="project-details">
-      <ProjectSummary project={document} />
-      <ProjectComments project={document} />
-    </div>
+    <MDBContainer>
+      <MDBRow>
+        <MDBCol size="8">
+          <ProjectSummary project={document} />
+        </MDBCol>
+        <MDBCol size="4">
+          <ProjectComments project={document} />
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 }

@@ -4,6 +4,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import Avatar from "../../components/Avatar";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 export default function ProjectComments({ project }) {
   const { user } = useAuthContext();
@@ -63,7 +64,7 @@ export default function ProjectComments({ project }) {
             value={newComment}
           ></textarea>
         </label>
-        <button className="btn">Add Comment</button>
+        <MDBBtn className="btn">Add Comment</MDBBtn>
       </form>
     </div>
   );

@@ -3,6 +3,8 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+import { MDBBtn } from "mdb-react-ui-kit";
+
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore("projects");
   const { user } = useAuthContext();
@@ -31,9 +33,9 @@ export default function ProjectSummary({ project }) {
         </div>
       </div>
       {user.uid === project.createdBy.id && (
-        <button className="btn" onClick={handleClick}>
+        <MDBBtn className="btn" onClick={handleClick}>
           Mark as Complete
-        </button>
+        </MDBBtn>
       )}
     </div>
   );
