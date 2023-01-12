@@ -1,5 +1,8 @@
 .create-form {
   max-width: 600px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
 }
 
 #project-details-text {

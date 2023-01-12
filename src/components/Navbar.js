@@ -1,11 +1,23 @@
-// import { Link } from "react-router-dom";
+import React, { useState } from "react";
+
+import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-// Bootstrap Components
-import Container from "react-bootstrap/Container";
+// // Bootstrap Components
 import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+
+// // MUI Components
+import {
+  MDBContainer,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarToggler,
+  MDBIcon,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBCollapse,
+} from "mdb-react-ui-kit";
 
 // styles & images
 import "./Navbar.css";
@@ -14,6 +26,8 @@ import Logo from "../assets/dc_logo.svg";
 export default function MainNavbar() {
   const { logout, isPending } = useLogout();
   const { user } = useAuthContext();
+
+  const [showNav, setShowNav] = useState(false);
 
   return (
     // <nav className="navbar">
@@ -51,51 +65,82 @@ export default function MainNavbar() {
     //   </ul>
     // </nav>
 
-    <Navbar
+    <MDBNavbar
       collapseOnSelect
       expand="lg"
       bg="light"
-      variant="light"
+      variant="dark"
       className="mb-5"
     >
-      <Container fluid>
-        <Navbar.Brand href="/" className="logo">
+      <MDBContainer fluid>
+        <MDBNavbarBrand href="/" className="logo">
           <img src={Logo} alt="Dev Connector logo" />
           <span>Dev Connector</span>
-        </Navbar.Brand>
-        <Navbar.Collapse
-          id="responsive-navbar-nav"
-          className="justify-content-end mx-3"
+        </MDBNavbarBrand>
+        <MDBNavbarToggler
+          type="button"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={() => setShowNav(!showNav)}
         >
+          <MDBIcon icon="bars" fas />
+        </MDBNavbarToggler>
+        <MDBCollapse navbar show={showNav} className="justify-content-end mx-3">
           {!user && (
             <Nav>
-              <>
-                <li>
-                  <Nav.Link to="/login">Login</Nav.Link>
-                </li>
-                <li>
-                  <Nav.Link to="/signup">Signup</Nav.Link>
-                </li>
-              </>
+              <MDBNavbarItem>
+                <MDBNavbarLink>
+                  <Link className="btn" to="/login">
+                    Login
+                  </Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink>
+                  <Link className="btn" to="/signup">
+                    Signup
+                  </Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
             </Nav>
           )}
 
           {user && (
-            <Nav>
+            <>
               {!isPending && (
-                <Nav.Link className="btn" onClick={logout}>
-                  Logout
-                </Nav.Link>
+                <Nav>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink>
+                      <Link className="btn" onClick={logout}>
+                        Logout
+                      </Link>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink>
+                      <Link className="btn" exact to="/">
+                        Dashboard
+                      </Link>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink>
+                      <Link className="btn" to="/create">
+                        New Project
+                      </Link>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                </Nav>
               )}
               {isPending && (
                 <button className="btn" disabled>
                   Logging out...
                 </button>
               )}
-            </Nav>
+            </>
           )}
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
   );
 }

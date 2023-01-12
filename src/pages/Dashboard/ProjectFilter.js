@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-// Bootstrap Components
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+// MUI Components
+import { MDBContainer, MDBBtn } from "mdb-react-ui-kit";
 
 const filterList = [
   "all",
@@ -22,24 +21,24 @@ export default function ProjectFilter({ changeFilter }) {
   };
 
   return (
-    <div className="project-filter">
-      <Container
-        fluid
-        activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-      >
-        <h4>Filter by: </h4>
-        {filterList.map((f) => (
-          <Button
-            variant="outline-primary"
-            key={f}
-            onClick={() => handleClick(f)}
-            className={currentFilter === f ? "active m-1" : "m-1"}
-          >
-            {f}
-          </Button>
-        ))}
-      </Container>
-    </div>
+    // <div className="project-filter">
+    <MDBContainer
+      fluid
+      activeKey="/home"
+      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+    >
+      <h4>Filter by: </h4>
+      {filterList.map((f) => (
+        <MDBBtn
+          variant="outline-primary"
+          key={f}
+          onClick={() => handleClick(f)}
+          className={currentFilter === f ? "active m-1" : "m-1"}
+        >
+          {f}
+        </MDBBtn>
+      ))}
+    </MDBContainer>
+    // </div>
   );
 }

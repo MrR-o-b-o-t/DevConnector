@@ -1,5 +1,12 @@
 import { useCollection } from "../hooks/useCollection";
 
+// MUI Components
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+} from "mdb-react-ui-kit";
+
 // components
 import Avatar from "./Avatar";
 
@@ -10,18 +17,20 @@ export default function OnlineUsers() {
   const { isPending, error, documents } = useCollection("users");
 
   return (
-    <div className="user-list">
+    <MDBContainer className="user-list">
       <h2>Team Members</h2>
       {isPending && <div>Loading users...</div>}
       {error && <div>{error}</div>}
       {documents &&
         documents.map((user) => (
-          <div key={user.id} className="user-list-item">
-            {user.online && <span className="online-user"></span>}
-            <span>{user.displayName}</span>
-            <Avatar src={user.photoURL} />
-          </div>
+          <MDBRow>
+            <MDBCol xs={12} key={user.id} className="user-list-item">
+              {user.online && <span className="online-user"></span>}
+              <span>{user.displayName}</span>
+              <Avatar src={user.photoURL} />
+            </MDBCol>
+          </MDBRow>
         ))}
-    </div>
+    </MDBContainer>
   );
 }

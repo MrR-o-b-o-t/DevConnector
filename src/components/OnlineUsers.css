@@ -2,6 +2,7 @@
   background: #fbfbfb;
   color: var(--heading-color);
   padding-right: 50px;
+  min-height: 80vh;
 }
 .user-list h2 {
   text-align: right;

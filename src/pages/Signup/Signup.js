@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
 
+// MUI Components
+import { MDBInput, MDBBtn } from "mdb-react-ui-kit";
+
 // styles
 import "./Signup.css";
 
@@ -45,7 +48,7 @@ export default function Signup() {
       <h2>sign up</h2>
       <label>
         <span>email:</span>
-        <input
+        <MDBInput
           required
           type="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -54,7 +57,7 @@ export default function Signup() {
       </label>
       <label>
         <span>password:</span>
-        <input
+        <MDBInput
           required
           type="password"
           onChange={(e) => setPassword(e.target.value)}
@@ -63,7 +66,7 @@ export default function Signup() {
       </label>
       <label>
         <span>display name:</span>
-        <input
+        <MDBInput
           required
           type="text"
           onChange={(e) => setDisplayName(e.target.value)}
@@ -72,14 +75,14 @@ export default function Signup() {
       </label>
       <label>
         <span>Profile thumbnail:</span>
-        <input required type="file" onChange={handleFileChange} />
+        <MDBInput required type="file" onChange={handleFileChange} />
         {thumbnailError && <div className="error">{thumbnailError}</div>}
       </label>
-      {!isPending && <button className="btn">Sign up</button>}
+      {!isPending && <MDBBtn className="mt-3">Sign up</MDBBtn>}
       {isPending && (
-        <button className="btn" disabled>
+        <MDBBtn className="mt-3" disabled>
           loading
-        </button>
+        </MDBBtn>
       )}
       {error && <div className="error">{error}</div>}
     </form>
