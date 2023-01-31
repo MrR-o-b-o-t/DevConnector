@@ -1,14 +1,6 @@
 import { useCollection } from "../../hooks/useCollection";
 import { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
-// import Sidebar from "../../components/Sidebar";
-import OnlineUsers from "../../components/OnlineUsers";
-
-// Bootstrap Components
-import Alert from "react-bootstrap/Alert";
-
-// MUI Components
-import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 
 // components
 import ProjectList from "../../components/ProjectList";
@@ -43,6 +35,7 @@ export default function Dashboard() {
           case "design":
           case "sales":
           case "marketing":
+            console.log(document.category, filter);
             return document.category === filter;
           default:
             return true;
@@ -51,21 +44,11 @@ export default function Dashboard() {
     : null;
 
   return (
-    <MDBContainer fluid>
-      <MDBRow>
-        {/* <Col sm={2}>{user && <Sidebar />}</Col> */}
-        <MDBCol sm={10} className="text-center">
-          <h2 className="page-title">Dashboard</h2>
-          {error && (
-            <Alert variant="danger" className="error">
-              {error}
-            </Alert>
-          )}
-          {documents && <ProjectFilter changeFilter={changeFilter} />}
-          {projects && <ProjectList projects={projects} />}
-        </MDBCol>
-        <MDBCol sm={2}> {user && <OnlineUsers />}</MDBCol>
-      </MDBRow>
-    </MDBContainer>
+    <div className="dashboard-container">
+      <h2 className="page-title">Dashboard</h2>
+      {error && <p className="error">{error}</p>}
+      {documents && <ProjectFilter changeFilter={changeFilter} />}
+      {projects && <ProjectList projects={projects} />}
+    </div>
   );
 }

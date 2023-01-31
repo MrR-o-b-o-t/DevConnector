@@ -1,3 +1,7 @@
+.dashboard-container {
+  padding: 1rem;
+}
+
 .project-filter {
   margin: 30px auto;
 }
@@ -11,7 +15,7 @@
   font-size: 0.9em;
   margin-right: 10px;
 }
-/* .project-filter button {
+.project-filter button {
   background: transparent;
   border: 0;
   font-family: inherit;
@@ -26,4 +30,26 @@
 }
 .project-filter button.active {
   color: var(--primary-color);
-} */
+}
+
+@media (max-width: 1200px) {
+  .project-filter nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .project-filter button {
+    border: none;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .project-filter p {
+    font-size: 0.9em;
+    padding-bottom: 10px;
+  }
+}

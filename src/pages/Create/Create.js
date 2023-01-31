@@ -6,15 +6,6 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router";
 import Select from "react-select";
 
-// MUI Components
-import {
-  MDBInput,
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-
 // styles
 import "./Create.css";
 
@@ -94,74 +85,55 @@ export default function Create() {
   };
 
   return (
-    <MDBContainer fluid className="create-form">
+    <div className="create-form">
       <h2 className="page-title">Create a new Project</h2>
       <form onSubmit={handleSubmit}>
-        <MDBRow className="mt-4">
-          <label>
-            <span>Project name:</span>
-            <MDBInput
-              label="Project Name"
-              required
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-            />
-          </label>
-        </MDBRow>
-        <MDBRow className="mt-4">
-          <label>
-            <span>Project Details:</span>
-            <MDBInput
-              id="project-details-text"
-              label="Project Details"
-              wrapperClass="mb-4"
-              textarea="true"
-              required
-              onChange={(e) => setDetails(e.target.value)}
-              value={details}
-            ></MDBInput>
-          </label>
-        </MDBRow>
-        <MDBRow className="mt-4">
-          <label>
-            <span>Set due date:</span>
-            <MDBInput
-              required
-              type="date"
-              onChange={(e) => setDueDate(e.target.value)}
-              value={dueDate}
-            />
-          </label>
-        </MDBRow>
-        <MDBRow className="mt-4">
-          <label>
-            <span>Project category:</span>
-            <Select
-              onChange={(option) => setCategory(option)}
-              options={categories}
-            />
-          </label>
-        </MDBRow>
-        <MDBRow className="mt-4">
-          <label>
-            <span>Assign to:</span>
-            <Select
-              onChange={(option) => setAssignedUsers(option)}
-              options={users}
-              isMulti
-            />
-          </label>
-        </MDBRow>
+        <label>
+          <span>Project name:</span>
+          <input
+            required
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+        </label>
+        <label>
+          <span>Project Details:</span>
+          <textarea
+            required
+            onChange={(e) => setDetails(e.target.value)}
+            value={details}
+          ></textarea>
+        </label>
+        <label>
+          <span>Set due date:</span>
+          <input
+            required
+            type="date"
+            onChange={(e) => setDueDate(e.target.value)}
+            value={dueDate}
+          />
+        </label>
+        <label>
+          <span>Project category:</span>
+          <Select
+            onChange={(option) => setCategory(option)}
+            options={categories}
+          />
+        </label>
+        <label>
+          <span>Assign to:</span>
+          <Select
+            onChange={(option) => setAssignedUsers(option)}
+            options={users}
+            isMulti
+          />
+        </label>
 
-        <MDBRow className="mt-4">
-          <MDBCol>
-            <MDBBtn className="btn">Add Project</MDBBtn>
-          </MDBCol>
-        </MDBRow>
+        <button className="btn">Add Project</button>
 
         {formError && <p className="error">{formError}</p>}
       </form>
-    </MDBContainer>
+    </div>
   );
 }

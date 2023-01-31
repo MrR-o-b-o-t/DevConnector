@@ -1,7 +1,15 @@
 .sidebar {
+  width: 300px;
+  min-width: 300px;
   background: var(--primary-color);
   min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
   color: #fff;
+}
+.sidebar-content {
+  position: fixed;
+  width: inherit;
 }
 .sidebar .user {
   font-weight: bold;
@@ -36,4 +44,29 @@
 }
 .sidebar .links .active img {
   filter: invert(40%);
+}
+
+/* avatar in sidebar */
+.sidebar .user .avatar {
+  margin-bottom: 10px;
+  width: 70px;
+  height: 70px;
+  border: 3px solid #fff;
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    min-width: 100vw;
+    max-height: 300px;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sidebar-content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
 }

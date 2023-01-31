@@ -5,12 +5,14 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import "./App.css";
 
 // pages & components
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Create from "./pages/Create/Create";
-import Login from "./pages/Login/Login";
-import Signup from "./pages/Signup/Signup";
-import Project from "./pages/Project/Project";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Create from "./pages/create/Create";
+import Login from "./pages/login/Login";
+import Signup from "./pages/signup/Signup";
+import Project from "./pages/project/Project";
 import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import OnlineUsers from "./components/OnlineUsers";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -19,7 +21,8 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <div>
+          {user && <Sidebar />}
+          <div className="container">
             <Navbar />
             <Switch>
               <Route exact path="/">
@@ -44,6 +47,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          {user && <OnlineUsers />}
         </BrowserRouter>
       )}
     </div>

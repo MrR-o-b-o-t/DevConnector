@@ -1,8 +1,11 @@
 .user-list {
+  min-height: 100vh;
+  width: 250px;
+  min-width: 250px;
+  padding: 30px;
+  box-sizing: border-box;
   background: #fbfbfb;
   color: var(--heading-color);
-  padding-right: 50px;
-  min-height: 80vh;
 }
 .user-list h2 {
   text-align: right;
@@ -23,6 +26,7 @@
   height: 40px;
 }
 
+/* online users */
 .user-list .online-user {
   display: inline-block;
   margin-right: 10px;
@@ -31,4 +35,29 @@
   background: #0ebb50;
   border-radius: 50%;
   margin-top: 2px;
+}
+
+@media (max-width: 1200px) {
+  .user-list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .user-list .user-list-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .user-list h2 {
+    text-align: left;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2em;
+  }
 }
